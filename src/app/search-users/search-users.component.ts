@@ -11,7 +11,7 @@ import { FavoriteUsersModalComponent } from 'app/favorite-users-modal/favorite-u
 @Component({
   selector: 'app-search-users',
   templateUrl: './search-users.component.html',
-  styleUrls: ['./search-users.component.css']
+  styleUrls: ['./search-users.component.scss']
 })
 export class SearchUsersComponent implements OnInit {
   place: string;
