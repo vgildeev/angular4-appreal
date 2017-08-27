@@ -1,36 +1,40 @@
+$primary-color: #9b59b6;
+
 .input {
   border-radius: 0;
   outline: none;
+  &:hover {
+    border: 1px solid $primary-color;
+  }
 }
-.input:hover {
-  border: 1px solid #9b59b6;
-}
+
 .btn {
   border: none;
   border-radius: 0;
-  background-color: #9b59b6;
-}
-.btn:hover {
-  background-color: #8e44ad;
 }
 
+.btn-primary {
+  background-color: $primary-color;
+  &:hover {
+    background-color: #8e44ad;
+  }
+}
 .user {
-  border: 1px solid #9b59b6;
+  border: 1px solid $primary-color;
   cursor: pointer;
   padding: 1em;
   margin: 1em;
-}
-
-.user:hover {
-  box-shadow: 1px 2px 3px #ccc;
+  &:hover {
+    box-shadow: 1px 2px 3px #ccc;
+  }
 }
 
 .box {
-  border: 1px solid #9b59b6;
+  border: 1px solid $primary-color;
   padding: 2em;
-}
 
-.box > .details {
-  margin-top: 1em;
-  font-family: monospace;
+  & > .details {
+    margin-top: 1em;
+    font-family: monospace;
+  }
 }
