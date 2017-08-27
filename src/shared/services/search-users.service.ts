@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+import { User } from '../models';
+
 @Injectable()
 export class SearchUsersService {
 
@@ -33,6 +35,20 @@ export class SearchUsersService {
         .map((res: Response) => res.json())
         .catch(this.handleError);
     }
+  }
+
+  getFavoriteUsers(): User[] {
+    const users = localStorage.getItem('favorite-users') || "[]";
+    return JSON.parse(users);
+  }
+
+  saveFavoriteUser(user: User): void {
+    let users = localStorage.getItem('favorite-users') || "[]";
+    users = JSON.parse(users);
+
+    users.push(user);
+    if (users.legth > 20) users.unshift();
+    localStorage.setItem('favorite-users', JSON.stringify(users));
   }
 
   private extractData(res: Response) {
