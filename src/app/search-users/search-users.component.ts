@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SearchUsersService } from '../search-users.service';
+import { SearchUsersService } from 'shared/services';
 @Component({
   selector: 'app-search-users',
   templateUrl: './search-users.component.html',

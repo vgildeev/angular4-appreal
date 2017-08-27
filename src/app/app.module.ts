@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SearchUsersComponent } from './search-users/search-users.component';
-import { SearchUsersService } from './search-users.service';
+import { SearchUsersService } from 'shared/services';
 
 
 @NgModule({
