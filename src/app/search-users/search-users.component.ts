@@ -7,6 +7,7 @@ import { MdDialog } from '@angular/material';
 // App
 import { SearchUsersService } from 'shared/services';
 import { FavoriteUsersModalComponent } from 'app/favorite-users-modal/favorite-users-modal.component';
+import { User } from 'shared/models';
 
 @Component({
   selector: 'app-search-users',
@@ -20,6 +21,7 @@ export class SearchUsersComponent implements OnInit {
   selected: boolean = false;
   selectedUser: any;
   error_text: string = "";
+
   constructor(
     private searchService: SearchUsersService,
     public modal: MdDialog,
@@ -51,6 +53,7 @@ export class SearchUsersComponent implements OnInit {
       userDatils => {
         this.selectedUser = userDatils;
         this.selected = true;
+        this.searchService.saveFavoriteUser(userDatils);
       },
       error => {
         this.selected = false;
@@ -60,9 +63,10 @@ export class SearchUsersComponent implements OnInit {
   }
 
   openFavoriteUsersModal() {
-    let modalRef = this.modal.open(FavoriteUsersModalComponent);
-    modalRef.afterClosed().subscribe(result => {
-      console.log('1111');
+    let favoriteUsers = this.searchService.getFavoriteUsers();
+    let modalRef = this.modal.open(FavoriteUsersModalComponent, {
+      panelClass: 'modal-lg',
+      data: favoriteUsers,
     });
   }
 }

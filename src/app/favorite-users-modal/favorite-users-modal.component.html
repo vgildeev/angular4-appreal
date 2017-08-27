@@ -1,3 +1,32 @@
-<p>
-  favorite-users-modal works!
-</p>
+<h2 md-dialog-title>
+  Favorite Users
+  <button md-dialog-close class="close">&times;</button>
+</h2>
+
+<md-dialog-content class="favorite-users">
+  <div class="favorite-user" *ngFor="let user of favoriteUsers">
+    <div class="box">
+      <img [src]="user.avatar_url" class="img-responsive img-circle">
+      <div class="details">
+        <div *ngIf="user.name">
+          <a [href]="user.html_url" target="_blank">
+            <h3>{{ user.name }}</h3>
+          </a>
+        </div>
+        <hr />
+        <div *ngIf="user.email">Email: {{ user.email }}</div>
+        <div *ngIf="user.location">Location: {{ user.location }}</div>
+        <div *ngIf="user.bio">Bio: {{ user.bio }}</div>
+        <div *ngIf="user.updated_at">Last Seen: {{ user.updated_at | date }}</div>
+        <div *ngIf="user.public_repos">Repos: {{ user.public_repos }}</div>
+        <div *ngIf="user.public_gists">Gists: {{ user.public_gists }}</div>
+        <div *ngIf="user.followers">Followers: {{ user.followers }}</div>
+        <div *ngIf="user.created_at">Joined github: {{ user.created_at | date }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!favoriteUsers.length">
+    You have not viewed any profiles yet.
+  </div>
+</md-dialog-content>

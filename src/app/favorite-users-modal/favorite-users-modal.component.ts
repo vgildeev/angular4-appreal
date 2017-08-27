@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
-import { MdDialogRef } from '@angular/material';
+import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-favorite-users-modal',
@@ -9,7 +9,10 @@ import { MdDialogRef } from '@angular/material';
 })
 export class FavoriteUsersModalComponent implements OnInit {
 
-  constructor(public modalRef: MdDialogRef<FavoriteUsersModalComponent>) {}
+  constructor(
+    public modalRef: MdDialogRef<FavoriteUsersModalComponent>,
+    @Inject(MD_DIALOG_DATA) public favoriteUsers: any,
+  ) {}
 
   ngOnInit() {}
 }
