@@ -1,5 +1,13 @@
+// Native
 import { Component, OnInit, Input } from '@angular/core';
+
+// 3rd party
+import { MdDialog } from '@angular/material';
+
+// App
 import { SearchUsersService } from 'shared/services';
+import { FavoriteUsersModalComponent } from 'app/favorite-users-modal/favorite-users-modal.component';
+
 @Component({
   selector: 'app-search-users',
   templateUrl: './search-users.component.html',
@@ -12,7 +20,10 @@ export class SearchUsersComponent implements OnInit {
   selected: boolean = false;
   selectedUser: any;
   error_text: string = "";
-  constructor(private searchService: SearchUsersService) { }
+  constructor(
+    private searchService: SearchUsersService,
+    public modal: MdDialog,
+  ) {}
 
   ngOnInit() {}
 
@@ -48,4 +59,10 @@ export class SearchUsersComponent implements OnInit {
     )
   }
 
+  openFavoriteUsersModal() {
+    let modalRef = this.modal.open(FavoriteUsersModalComponent);
+    modalRef.afterClosed().subscribe(result => {
+      console.log('1111');
+    });
+  }
 }
