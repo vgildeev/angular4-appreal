@@ -50,7 +50,7 @@ export class SearchUsersComponent implements OnInit {
 
   getDetails(username: string) {
     this.searchService.getDetailsByUserName(username).subscribe(
-      userDatils => {
+      (userDatils: User) => {
         this.selectedUser = userDatils;
         this.selected = true;
         this.searchService.saveFavoriteUser(userDatils);

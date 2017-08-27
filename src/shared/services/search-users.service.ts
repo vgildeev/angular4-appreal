@@ -43,11 +43,12 @@ export class SearchUsersService {
   }
 
   saveFavoriteUser(user: User): void {
-    let users = localStorage.getItem('favorite-users') || "[]";
-    users = JSON.parse(users);
+    const usersJson: string = localStorage.getItem('favorite-users') || "[]";
+    let users: User[] = JSON.parse(usersJson);
+    const isUserNotExists: boolean = !users.find(u => u.id === user.id);
 
-    users.push(user);
-    if (users.legth > 20) users.unshift();
+    if (isUserNotExists) users.push(user);
+    if (users.length > 20) users.shift();
     localStorage.setItem('favorite-users', JSON.stringify(users));
   }
 
