@@ -1,13 +1,24 @@
 import { TestBed, async } from '@angular/core/testing';
+import { HttpModule } from '@angular/http';
+
+import { MdDialogModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
+import { SearchUsersComponent } from './search-users/search-users.component';
+import { SearchUsersService } from 'shared/services';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        SearchUsersComponent,
       ],
+      imports: [
+        HttpModule,
+        MdDialogModule,
+      ],
+      providers: [ SearchUsersService ],
     }).compileComponents();
   }));
 
@@ -27,6 +38,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('app works!');
+    expect(compiled.querySelector('h2').textContent).toContain('Find developers in your city');
   }));
 });
