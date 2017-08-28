@@ -7,8 +7,8 @@ describe('github-users App', () => {
     page = new GithubUsersPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display message saying Find developers in your city', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Find developers in your city');
   });
 });
